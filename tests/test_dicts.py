@@ -1,7 +1,14 @@
+import pytest
+
 from utils import dicts
 
-data = {"vcs": "mercurial"}
-def test_get_val():
+
+@pytest.fixture
+def data():
+    return {"vcs": "mercurial"}
+
+
+def test_get_val(data):
     assert dicts.get_val(data, "vcs")
     assert dicts.get_val(data, "vcs", "git")
     assert dicts.get_val({}, "vcs", "git")
